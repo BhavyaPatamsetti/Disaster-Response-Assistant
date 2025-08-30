@@ -1,0 +1,29 @@
+# Use Python 3.11 as base
+FROM python:3.11-slim
+
+# Set working directory inside container
+WORKDIR /app
+
+# Install system tools
+RUN apt-get update && apt-get install -y curl && rm -rf /var/lib/apt/lists/*
+
+# Copy and install Python requirements
+COPY requirements.txt .
+RUN pip install -r requirements.txt
+
+# Copy your app code
+COPY app/ ./app/
+COPY scripts/ ./scripts/
+COPY data/ ./data/
+
+# Create folder for AI index
+RUN mkdir -p artifacts
+
+# Build the AI search index
+RUN python scripts/build_index.py data/clean artifacts/index.faiss artifacts/meta.json
+
+# Tell Docker this app uses port 8000
+EXPOSE 8000
+
+# Start the app
+CMD ["python", "app/backend/main.py"]

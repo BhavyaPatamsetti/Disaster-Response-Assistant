@@ -1,0 +1,25 @@
+// This is a basic Flutter widget test.
+//
+// To perform an interaction with a widget in your test, use the WidgetTester
+// utility in the flutter_test package. For example, you can send tap and scroll
+// gestures. You can also use WidgetTester to find child widgets in the widget
+// tree, read text, and verify that the values of widget properties are correct.
+
+import 'package:flutter/material.dart';
+import 'package:flutter_test/flutter_test.dart';
+
+import 'package:disaster_response_assistant/main.dart';
+
+void main() {
+  testWidgets('App loads and displays home screen', (WidgetTester tester) async {
+    // Build our app and trigger a frame.
+    await tester.pumpWidget(const DisasterResponseApp());
+
+    // Verify that the app loads without crashing
+    expect(find.byType(MaterialApp), findsOneWidget);
+    
+    // You can add more specific tests here based on your HomeScreen content
+    // For example, if your HomeScreen has a specific title or widget:
+    // expect(find.text('Disaster Response Assistant'), findsOneWidget);
+  });
+}

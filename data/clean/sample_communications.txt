@@ -1,0 +1,28 @@
+Emergency Communication Protocols
+
+Communication Methods:
+1. Two-way radio communication
+2. Satellite phone for remote areas
+3. Emergency beacons and signals
+4. Morse code for basic messaging
+5. Visual signals and flags
+
+Emergency Signals:
+- SOS: ... --- ... (3 short, 3 long, 3 short)
+- Help needed: 3 blasts on whistle
+- All clear: 1 long blast
+- Return to base: 2 short blasts
+
+Radio Etiquette:
+- Use clear, concise language
+- Identify yourself and location
+- Wait for acknowledgment
+- Use standard emergency frequencies
+- Keep transmissions brief
+
+Visual Communication:
+- Signal mirrors for long distance
+- Smoke signals for rescue
+- Ground-to-air signals
+- Flag semaphore for ships
+- Hand signals for close range

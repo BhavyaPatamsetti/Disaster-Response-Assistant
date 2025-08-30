@@ -1,0 +1,9 @@
+# Don't copy these to Docker
+.git
+.venv
+__pycache__
+*.pyc
+.DS_Store
+mobile/build/
+*.log
+README.md

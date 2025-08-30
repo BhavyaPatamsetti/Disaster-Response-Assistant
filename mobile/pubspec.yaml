@@ -1,0 +1,60 @@
+name: disaster_response_assistant
+description: A comprehensive disaster response and emergency preparedness mobile application.
+publish_to: 'none'
+version: 1.0.0+1
+
+environment:
+  sdk: '^3.8.0'
+
+dependencies:
+  flutter:
+    sdk: flutter
+  
+  # State management
+  provider: ^6.1.1
+  
+  # Local storage
+  shared_preferences: ^2.2.2
+  
+  # HTTP requests
+  http: ^1.1.0
+  
+  # Device info
+  device_info_plus: ^11.5.0
+  package_info_plus: ^4.2.0
+  
+  # File handling
+  path_provider: ^2.1.1
+  
+  # Charts
+  fl_chart: ^0.66.0
+  
+  # Animations
+  lottie: ^2.7.0
+  
+  # Typography
+  google_fonts: ^6.1.0
+  
+  # Native sharing
+  share_plus: ^7.2.1
+  
+  # URL launcher for sharing
+  url_launcher: ^6.2.4
+  
+  # Location services - NEW
+  geolocator: ^10.1.0
+  geocoding: ^2.1.1
+  permission_handler: ^11.1.0
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  flutter_lints: ^3.0.0
+
+flutter:
+  uses-material-design: true
+  
+  assets:
+    - assets/images/
+    - assets/animations/
+    - assets/icons/
