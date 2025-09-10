@@ -9,11 +9,12 @@ import 'package:disaster_response_assistant/screens/ask_question_screen.dart';
 import 'package:disaster_response_assistant/screens/supply_inventory_screen.dart';
 import 'package:disaster_response_assistant/screens/emergency_contacts_screen.dart';
 import 'package:disaster_response_assistant/screens/group_messaging_screen.dart';
-import 'package:disaster_response_assistant/screens/location_tracking_screen.dart'; // Add this import
+import 'package:disaster_response_assistant/screens/location_tracking_screen.dart';
 import 'package:disaster_response_assistant/screens/response_screen.dart';
 import 'package:disaster_response_assistant/widgets/offline_indicator.dart';
 import 'package:disaster_response_assistant/widgets/settings_drawer.dart';
 import 'package:disaster_response_assistant/main.dart';
+import 'package:disaster_response_assistant/l10n/app_localizations.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
@@ -49,17 +50,17 @@ class _HomeScreenState extends State<HomeScreen> {
             backgroundColor: AppTheme.primaryColor,
             foregroundColor: Colors.white,
             elevation: 0,
-            title: const Row(
+            title: Row(
               children: [
-                Icon(
+                const Icon(
                   Icons.emergency,
                   color: Colors.white,
                   size: 24,
                 ),
-                SizedBox(width: 8),
+                const SizedBox(width: 8),
                 Text(
-                  'Disaster Response Assistant',
-                  style: TextStyle(
+                  AppLocalizations.of(context)!.disasterResponseAssistant,
+                  style: const TextStyle(
                     fontSize: 18,
                     fontWeight: FontWeight.bold,
                     color: Colors.white,
@@ -91,41 +92,41 @@ class _HomeScreenState extends State<HomeScreen> {
                         color: AppTheme.primaryColor.withOpacity(0.1),
                         child: TabBar(
                           labelColor: AppTheme.primaryColor,
-                          unselectedLabelColor: Colors.grey[600],
+                          unselectedLabelColor: Colors.grey,
                           indicatorColor: AppTheme.primaryColor,
                           isScrollable: true,
-                          tabs: const [
+                          tabs: [
                             Tab(
                               icon: Icon(Icons.medical_services),
-                              text: 'First Aid',
+                              text: AppLocalizations.of(context)!.firstAid,
                             ),
                             Tab(
                               icon: Icon(Icons.nature),
-                              text: 'Survival',
+                              text: AppLocalizations.of(context)!.survival,
                             ),
                             Tab(
                               icon: Icon(Icons.wifi),
-                              text: 'Communic',
+                              text: AppLocalizations.of(context)!.communications,
                             ),
                             Tab(
                               icon: Icon(Icons.inventory_2),
-                              text: 'Supplies',
+                              text: AppLocalizations.of(context)!.supplies,
                             ),
                             Tab(
                               icon: Icon(Icons.contact_phone),
-                              text: 'Emergency',
+                              text: AppLocalizations.of(context)!.emergency,
                             ),
                             Tab(
                               icon: Icon(Icons.group),
-                              text: 'Groups',
+                              text: AppLocalizations.of(context)!.groups,
                             ),
                             Tab(
                               icon: Icon(Icons.location_on),
-                              text: 'Location',
+                              text: AppLocalizations.of(context)!.location,
                             ),
                             Tab(
                               icon: Icon(Icons.chat),
-                              text: 'Ask Quest',
+                              text: AppLocalizations.of(context)!.askQuestion,
                             ),
                           ],
                         ),
@@ -173,32 +174,32 @@ class _HomeScreenState extends State<HomeScreen> {
     showDialog(
       context: context,
       builder: (context) => AlertDialog(
-        title: const Text('🚨 Disaster Response Assistant'),
-        content: const Column(
+        title: Text(AppLocalizations.of(context)!.appInfo),
+        content: Column(
           mainAxisSize: MainAxisSize.min,
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Text(
-              'This app provides offline-first disaster response guidance with source citations.',
+              AppLocalizations.of(context)!.appDescription,
               style: TextStyle(fontSize: 16),
             ),
             SizedBox(height: 16),
             Text(
-              'Features:',
+              AppLocalizations.of(context)!.features,
               style: TextStyle(fontWeight: FontWeight.bold),
             ),
-            Text('• First Aid guidance'),
-            Text('• Survival skills'),
-            Text('• Emergency communications'),
-            Text('• Offline operation'),
-            Text('• Source citations'),
+            Text(AppLocalizations.of(context)!.firstAidGuidance),
+            Text(AppLocalizations.of(context)!.survivalSkillsFeature),
+            Text(AppLocalizations.of(context)!.emergencyCommsFeature),
+            Text(AppLocalizations.of(context)!.offlineOperation),
+            Text(AppLocalizations.of(context)!.sourceCitations),
           ],
         ),
         actions: [
           TextButton(
             onPressed: () => Navigator.of(context).pop(),
-            child: const Text(
-              'OK',
+            child: Text(
+              AppLocalizations.of(context)!.ok,
               style: TextStyle(color: AppTheme.primaryColor),
             ),
           ),
@@ -211,7 +212,7 @@ class _HomeScreenState extends State<HomeScreen> {
     showDialog(
       context: context,
       builder: (context) => AlertDialog(
-        title: const Row(
+        title: Row(
           children: [
             Icon(
               Icons.warning,
@@ -219,19 +220,19 @@ class _HomeScreenState extends State<HomeScreen> {
               size: 28,
             ),
             SizedBox(width: 8),
-            Text('🚨 Emergency'),
+            Text(AppLocalizations.of(context)!.emergencyWarning),
           ],
         ),
-        content: const Text(
-          'This is for guidance only. In a real emergency, call your local emergency services immediately.',
+        content: Text(
+          AppLocalizations.of(context)!.emergencyDisclaimer,
           style: TextStyle(fontSize: 16),
         ),
         actions: [
           TextButton(
             onPressed: () => Navigator.of(context).pop(),
-            child: const Text(
-              'I Understand',
-              style: TextStyle(color: AppTheme.errorColor),
+            child: Text(
+              AppLocalizations.of(context)!.ok,
+              style: const TextStyle(color: AppTheme.errorColor),
             ),
           ),
         ],

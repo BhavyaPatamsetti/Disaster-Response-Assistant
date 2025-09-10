@@ -3,6 +3,7 @@ import 'package:provider/provider.dart';
 import 'package:disaster_response_assistant/providers/app_state.dart';
 import 'package:disaster_response_assistant/widgets/response_display.dart';
 import 'package:disaster_response_assistant/main.dart';
+import 'package:disaster_response_assistant/l10n/app_localizations.dart';
 
 class ResponseScreen extends StatelessWidget {
   const ResponseScreen({super.key});
@@ -78,7 +79,7 @@ class ResponseScreen extends StatelessWidget {
                             vertical: 12,
                           ),
                         ),
-                        child: const Text('Go Back'),
+                        child: Text(AppLocalizations.of(context)!.goBack),
                       ),
                     ],
                   ),

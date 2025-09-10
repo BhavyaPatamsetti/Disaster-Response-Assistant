@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:disaster_response_assistant/providers/app_state.dart';
+import 'package:disaster_response_assistant/l10n/app_localizations.dart';
 
 class AskQuestionScreen extends StatefulWidget {
   const AskQuestionScreen({super.key});
@@ -30,7 +31,7 @@ class _AskQuestionScreenState extends State<AskQuestionScreen> {
           children: [
             // Header
             Text(
-              '❓ Ask Any Question',
+              '❓ ${AppLocalizations.of(context)!.askAnyQuestion}',
               style: Theme.of(context).textTheme.headlineSmall?.copyWith(
                 fontWeight: FontWeight.bold,
                 color: Theme.of(context).colorScheme.primary,
@@ -38,7 +39,7 @@ class _AskQuestionScreenState extends State<AskQuestionScreen> {
             ),
             const SizedBox(height: 8),
             Text(
-              'Ask any disaster response or emergency preparedness question:',
+              AppLocalizations.of(context)!.askAnyDisasterQuestion,
               style: Theme.of(context).textTheme.bodyMedium?.copyWith(
                 color: Colors.grey[600],
               ),
@@ -50,7 +51,7 @@ class _AskQuestionScreenState extends State<AskQuestionScreen> {
               controller: _questionController,
               focusNode: _questionFocusNode,
               decoration: InputDecoration(
-                hintText: 'e.g., How do I treat a deep cut? What should I pack in an emergency kit?',
+                hintText: AppLocalizations.of(context)!.questionInputHint,
                 border: OutlineInputBorder(
                   borderRadius: BorderRadius.circular(12),
                 ),
@@ -76,7 +77,7 @@ class _AskQuestionScreenState extends State<AskQuestionScreen> {
                   child: ElevatedButton.icon(
                     onPressed: _askQuestion,
                     icon: const Icon(Icons.search),
-                    label: const Text('Get Answer'),
+                    label: Text(AppLocalizations.of(context)!.getAnswer),
                     style: ElevatedButton.styleFrom(
                       backgroundColor: Theme.of(context).colorScheme.primary,
                       foregroundColor: Colors.white,
@@ -89,7 +90,7 @@ class _AskQuestionScreenState extends State<AskQuestionScreen> {
                   child: OutlinedButton.icon(
                     onPressed: _clearQuestion,
                     icon: const Icon(Icons.clear),
-                    label: const Text('Clear'),
+                    label: Text(AppLocalizations.of(context)!.clear),
                     style: OutlinedButton.styleFrom(
                       padding: const EdgeInsets.symmetric(vertical: 16),
                     ),
@@ -119,7 +120,7 @@ class _AskQuestionScreenState extends State<AskQuestionScreen> {
                       ),
                       const SizedBox(width: 8),
                       Text(
-                        '💡 Example Questions',
+                        '💡 ${AppLocalizations.of(context)!.exampleQuestions}',
                         style: TextStyle(
                           fontWeight: FontWeight.bold,
                           color: Colors.orange[700],
@@ -129,24 +130,24 @@ class _AskQuestionScreenState extends State<AskQuestionScreen> {
                   ),
                   const SizedBox(height: 16),
                   _buildExampleQuestion(
-                    'How do I create an emergency evacuation plan?',
-                    () => _setExampleQuestion('How do I create an emergency evacuation plan?'),
+                    AppLocalizations.of(context)!.exampleEvacuationPlan,
+                    () => _setExampleQuestion(AppLocalizations.of(context)!.exampleEvacuationPlan),
                   ),
                   _buildExampleQuestion(
-                    'What should I include in a 72-hour emergency kit?',
-                    () => _setExampleQuestion('What should I include in a 72-hour emergency kit?'),
+                    AppLocalizations.of(context)!.example72HourKit,
+                    () => _setExampleQuestion(AppLocalizations.of(context)!.example72HourKit),
                   ),
                   _buildExampleQuestion(
-                    'How do I help someone having a panic attack?',
-                    () => _setExampleQuestion('How do I help someone having a panic attack?'),
+                    AppLocalizations.of(context)!.examplePanicAttack,
+                    () => _setExampleQuestion(AppLocalizations.of(context)!.examplePanicAttack),
                   ),
                   _buildExampleQuestion(
-                    'What are the signs of heat stroke and how do I treat it?',
-                    () => _setExampleQuestion('What are the signs of heat stroke and how do I treat it?'),
+                    AppLocalizations.of(context)!.exampleHeatStroke,
+                    () => _setExampleQuestion(AppLocalizations.of(context)!.exampleHeatStroke),
                   ),
                   _buildExampleQuestion(
-                    'How do I purify water in the wilderness?',
-                    () => _setExampleQuestion('How do I purify water in the wilderness?'),
+                    AppLocalizations.of(context)!.examplePurifyWater,
+                    () => _setExampleQuestion(AppLocalizations.of(context)!.examplePurifyWater),
                   ),
                 ],
               ),
@@ -173,7 +174,7 @@ class _AskQuestionScreenState extends State<AskQuestionScreen> {
                       ),
                       const SizedBox(width: 8),
                       Text(
-                        'Tips for Better Answers',
+                        AppLocalizations.of(context)!.tipsForBetterAnswers,
                         style: TextStyle(
                           fontWeight: FontWeight.bold,
                           color: Colors.blue[700],
@@ -183,19 +184,19 @@ class _AskQuestionScreenState extends State<AskQuestionScreen> {
                   ),
                   const SizedBox(height: 8),
                   Text(
-                    '• Be specific about the emergency situation',
+                    AppLocalizations.of(context)!.tipBeSpecific,
                     style: TextStyle(color: Colors.blue[700]),
                   ),
                   Text(
-                    '• Mention any relevant conditions or limitations',
+                    AppLocalizations.of(context)!.tipMentionConditions,
                     style: TextStyle(color: Colors.blue[700]),
                   ),
                   Text(
-                    '• Ask about immediate steps first, then follow-up',
+                    AppLocalizations.of(context)!.tipAskImmediate,
                     style: TextStyle(color: Colors.blue[700]),
                   ),
                   Text(
-                    '• Include location or environment if relevant',
+                    AppLocalizations.of(context)!.tipIncludeLocation,
                     style: TextStyle(color: Colors.blue[700]),
                   ),
                 ],
@@ -248,8 +249,8 @@ class _AskQuestionScreenState extends State<AskQuestionScreen> {
       _questionFocusNode.unfocus();
     } else {
       ScaffoldMessenger.of(context).showSnackBar(
-        const SnackBar(
-          content: Text('Please enter a question'),
+        SnackBar(
+          content: Text(AppLocalizations.of(context)!.pleaseEnterQuestion),
           backgroundColor: Colors.orange,
         ),
       );

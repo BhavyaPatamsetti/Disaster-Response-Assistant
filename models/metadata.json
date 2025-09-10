@@ -1,0 +1,33 @@
+{
+  "model_name": "BAAI/bge-small-en-v1.5",
+  "dimension": 384,
+  "total_chunks": 3,
+  "chunk_size": 800,
+  "overlap": 100,
+  "chunks": [
+    {
+      "file_id": 0,
+      "chunk_id": 0,
+      "filename": "sample_communications.txt",
+      "source": "sample_communications",
+      "chunk_size": 717,
+      "text": "Emergency Communication Protocols\n\nCommunication Methods:\n1. Two-way radio communication\n2. Satellite phone for remote areas\n3. Emergency beacons and signals\n4. Morse code for basic messaging\n5. Visua..."
+    },
+    {
+      "file_id": 1,
+      "chunk_id": 0,
+      "filename": "sample_first_aid.txt",
+      "source": "sample_first_aid",
+      "chunk_size": 553,
+      "text": "First Aid Basics\n\nEmergency Response Steps:\n1. Assess the situation for safety\n2. Check if the person is conscious\n3. Call emergency services if needed\n4. Provide basic first aid until help arrives\n\nC..."
+    },
+    {
+      "file_id": 2,
+      "chunk_id": 0,
+      "filename": "sample_survival.txt",
+      "source": "sample_survival",
+      "chunk_size": 726,
+      "text": "Wilderness Survival Guide\n\nEssential Survival Skills:\n1. Finding and purifying water\n2. Building shelter from natural materials\n3. Starting fires using various methods\n4. Identifying edible plants and..."
+    }
+  ]
+}

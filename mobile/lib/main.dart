@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:provider/provider.dart';
-// Using system fonts instead of Google Fonts
+import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:disaster_response_assistant/providers/app_state.dart';
 import 'package:disaster_response_assistant/screens/home_screen.dart';
-// Theme is defined in this file
+import 'package:disaster_response_assistant/l10n/app_localizations.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -40,24 +40,41 @@ class DisasterResponseApp extends StatelessWidget {
       child: Consumer<AppState>(
         builder: (context, appState, child) {
           return MaterialApp(
-            title: 'Disaster Response Assistant',
+            title: AppLocalizations.of(context)?.appTitle ?? 'Disaster Response Assistant',
             debugShowCheckedModeBanner: false,
             theme: AppTheme.lightTheme,
             darkTheme: AppTheme.darkTheme,
             themeMode: appState.isDarkMode ? ThemeMode.dark : ThemeMode.light,
             home: const HomeScreen(),
             localizationsDelegates: const [
-              // Add localization delegates here
+              AppLocalizations.delegate,
+              GlobalMaterialLocalizations.delegate,
+              GlobalWidgetsLocalizations.delegate,
+              GlobalCupertinoLocalizations.delegate,
             ],
             supportedLocales: const [
               Locale('en', 'US'),
               Locale('es', 'ES'),
               Locale('hi', 'IN'),
             ],
+            locale: _getLocaleFromLanguage(appState.currentLanguage),
           );
         },
       ),
     );
+  }
+
+  Locale _getLocaleFromLanguage(String language) {
+    switch (language) {
+      case 'english':
+        return const Locale('en', 'US');
+      case 'spanish':
+        return const Locale('es', 'ES');
+      case 'hinglish':
+        return const Locale('hi', 'IN');
+      default:
+        return const Locale('en', 'US');
+    }
   }
 }
 

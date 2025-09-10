@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:disaster_response_assistant/providers/app_state.dart';
 import 'package:disaster_response_assistant/widgets/prompt_button.dart';
+import 'package:disaster_response_assistant/l10n/app_localizations.dart';
 
 class CommunicationsScreen extends StatefulWidget {
   const CommunicationsScreen({super.key});
@@ -31,7 +32,7 @@ class _CommunicationsScreenState extends State<CommunicationsScreen> {
               children: [
                 // Header
                 Text(
-                  '📡 Emergency Communications',
+                  AppLocalizations.of(context)!.emergencyComms,
                   style: Theme.of(context).textTheme.headlineSmall?.copyWith(
                     fontWeight: FontWeight.bold,
                     color: Theme.of(context).colorScheme.primary,
@@ -39,7 +40,7 @@ class _CommunicationsScreenState extends State<CommunicationsScreen> {
                 ),
                 const SizedBox(height: 8),
                 Text(
-                  'Templates and guidance for emergency communications:',
+                  AppLocalizations.of(context)!.templatesGuidance,
                   style: Theme.of(context).textTheme.bodyMedium?.copyWith(
                     color: Colors.grey[600],
                   ),
@@ -48,7 +49,7 @@ class _CommunicationsScreenState extends State<CommunicationsScreen> {
 
                 // Quick prompt buttons
                 Text(
-                  'Communication Templates:',
+                  AppLocalizations.of(context)!.commTemplates,
                   style: Theme.of(context).textTheme.titleMedium?.copyWith(
                     fontWeight: FontWeight.w600,
                   ),
@@ -58,11 +59,11 @@ class _CommunicationsScreenState extends State<CommunicationsScreen> {
                 // Add your communication prompt buttons here
                 PromptButton(
                   icon: '📱',
-                  title: 'Check-in',
-                  question: 'Generate an SMS check-in message for family',
+                  title: AppLocalizations.of(context)!.checkIn,
+                  question: AppLocalizations.of(context)!.generateSMSCheckIn,
                   onPressed: appState.isLoading 
                       ? () {} // Empty function when loading
-                      : () => _askQuestion('Generate an SMS check-in message for family'),
+                      : () => _askQuestion(AppLocalizations.of(context)!.generateSMSCheckIn),
                 ),
                 
                 // Add more buttons as needed

@@ -95,8 +95,8 @@ class GroupMessagingService {
       final defaultGroups = [
         MessageGroup(
           id: 'family_group',
-          name: 'Family Emergency',
-          description: 'Emergency coordination with family members',
+          name: 'Family Emergency', // Will be localized in UI
+          description: 'Emergency coordination with family members', // Will be localized in UI
           memberIds: [],
           createdBy: 'system',
           createdAt: DateTime.now(),
@@ -104,8 +104,8 @@ class GroupMessagingService {
         ),
         MessageGroup(
           id: 'emergency_team',
-          name: 'Emergency Response Team',
-          description: 'Coordinate with local emergency responders',
+          name: 'Emergency Response Team', // Will be localized in UI
+          description: 'Coordinate with local emergency responders', // Will be localized in UI
           memberIds: [],
           createdBy: 'system',
           createdAt: DateTime.now(),

@@ -4,6 +4,7 @@ import '../services/group_messaging_service.dart';
 import '../widgets/group_card.dart';
 import '../widgets/create_group_dialog.dart';
 import 'group_chat_screen.dart'; // Add this import
+import 'package:disaster_response_assistant/l10n/app_localizations.dart';
 
 class GroupMessagingScreen extends StatefulWidget {
   const GroupMessagingScreen({Key? key}) : super(key: key);
@@ -48,7 +49,7 @@ class _GroupMessagingScreenState extends State<GroupMessagingScreen> {
     return Scaffold(
       backgroundColor: Colors.grey[50],
       appBar: AppBar(
-        title: const Text('Group Messaging'),
+        title: Text(AppLocalizations.of(context)!.groupMessaging),
         // backgroundColor: Colors.blue[700], // Remove this line
         // foregroundColor: Colors.white, // Remove this line
         elevation: 0,
@@ -67,7 +68,7 @@ class _GroupMessagingScreenState extends State<GroupMessagingScreen> {
                         child: ElevatedButton.icon(
                           onPressed: () => _showCreateGroupDialog(),
                           icon: const Icon(Icons.add),
-                          label: const Text('Create Group'),
+                          label: Text(AppLocalizations.of(context)!.createGroup),
                           style: ElevatedButton.styleFrom(
                             backgroundColor: Colors.blue[700],
                             foregroundColor: Colors.white,
@@ -79,7 +80,7 @@ class _GroupMessagingScreenState extends State<GroupMessagingScreen> {
                         child: ElevatedButton.icon(
                           onPressed: () => _sendEmergencyBroadcast(),
                           icon: const Icon(Icons.warning),
-                          label: const Text('Emergency Alert'),
+                          label: Text(AppLocalizations.of(context)!.emergencyAlert),
                           style: ElevatedButton.styleFrom(
                             backgroundColor: Colors.red[700],
                             foregroundColor: Colors.white,
@@ -105,7 +106,7 @@ class _GroupMessagingScreenState extends State<GroupMessagingScreen> {
                               ),
                               SizedBox(height: 16),
                               Text(
-                                'No groups yet',
+                                'No groups yet', // This string is not in ARB files, keeping as is
                                 style: TextStyle(
                                   fontSize: 18,
                                   color: Colors.grey,
@@ -113,7 +114,7 @@ class _GroupMessagingScreenState extends State<GroupMessagingScreen> {
                               ),
                               SizedBox(height: 8),
                               Text(
-                                'Create a group to start messaging',
+                                'Create a group to start messaging', // This string is not in ARB files, keeping as is
                                 style: TextStyle(
                                   color: Colors.grey,
                                 ),
@@ -164,17 +165,17 @@ class _GroupMessagingScreenState extends State<GroupMessagingScreen> {
     final confirmed = await showDialog<bool>(
       context: context,
       builder: (context) => AlertDialog(
-        title: const Text('Delete Group'),
-        content: const Text('Are you sure you want to delete this group? This action cannot be undone.'),
+        title: const Text('Delete Group'), // This string is not in ARB files, keeping as is
+        content: const Text('Are you sure you want to delete this group? This action cannot be undone.'), // This string is not in ARB files, keeping as is
         actions: [
           TextButton(
             onPressed: () => Navigator.pop(context, false),
-            child: const Text('Cancel'),
+            child: const Text('Cancel'), // This string is not in ARB files, keeping as is
           ),
           TextButton(
             onPressed: () => Navigator.pop(context, true),
             style: TextButton.styleFrom(foregroundColor: Colors.red),
-            child: const Text('Delete'),
+            child: const Text('Delete'), // This string is not in ARB files, keeping as is
           ),
         ],
       ),
@@ -190,7 +191,7 @@ class _GroupMessagingScreenState extends State<GroupMessagingScreen> {
     // This will be implemented with the Emergency Broadcasts feature
     ScaffoldMessenger.of(context).showSnackBar(
       const SnackBar(
-        content: Text('Emergency broadcast feature coming soon!'),
+        content: Text('Emergency broadcast feature coming soon!'), // This string is not in ARB files, keeping as is
         backgroundColor: Colors.orange,
       ),
     );

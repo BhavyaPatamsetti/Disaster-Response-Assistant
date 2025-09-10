@@ -19,8 +19,8 @@ COPY data/ ./data/
 # Create folder for AI index
 RUN mkdir -p artifacts
 
-# Build the AI search index
-RUN python scripts/build_index.py data/clean artifacts/index.faiss artifacts/meta.json
+# Build the AI search index (with error handling)
+RUN python scripts/build_index.py data/clean artifacts/index.faiss artifacts/meta.json || echo "Index build failed, will build at runtime"
 
 # Tell Docker this app uses port 8000
 EXPOSE 8000

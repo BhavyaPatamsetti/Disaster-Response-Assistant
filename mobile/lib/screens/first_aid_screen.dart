@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:disaster_response_assistant/l10n/app_localizations.dart';
 import 'package:disaster_response_assistant/providers/app_state.dart';
-// Remove this line:
-// import 'package:disaster_response_assistant/models/response_data.dart';
 import 'package:disaster_response_assistant/widgets/prompt_button.dart';
 import 'package:disaster_response_assistant/main.dart'; // Import AppTheme
 
@@ -34,7 +33,7 @@ class _FirstAidScreenState extends State<FirstAidScreen> {
               children: [
                 // Header
                 Text(
-                  'First Aid Guidance',
+                  AppLocalizations.of(context)!.firstAid,
                   style: Theme.of(context).textTheme.headlineSmall?.copyWith(
                     fontWeight: FontWeight.bold,
                     color: AppTheme.primaryColor,
@@ -42,7 +41,7 @@ class _FirstAidScreenState extends State<FirstAidScreen> {
                 ),
                 const SizedBox(height: 8),
                 Text(
-                  'Select a first aid scenario or ask a specific question:',
+                  AppLocalizations.of(context)!.selectFirstAidScenario,
                   style: Theme.of(context).textTheme.bodyMedium?.copyWith(
                     color: Colors.grey[600],
                   ),
@@ -59,9 +58,9 @@ class _FirstAidScreenState extends State<FirstAidScreen> {
                       borderRadius: BorderRadius.circular(12),
                       border: Border.all(color: AppTheme.primaryColor.withOpacity(0.3)),
                     ),
-                    child: const Row(
+                    child: Row(
                       children: [
-                        SizedBox(
+                        const SizedBox(
                           width: 20,
                           height: 20,
                           child: CircularProgressIndicator(
@@ -69,10 +68,10 @@ class _FirstAidScreenState extends State<FirstAidScreen> {
                             valueColor: AlwaysStoppedAnimation<Color>(AppTheme.primaryColor),
                           ),
                         ),
-                        SizedBox(width: 12),
+                        const SizedBox(width: 12),
                         Text(
-                          'Getting response from AI...',
-                          style: TextStyle(
+                          AppLocalizations.of(context)!.gettingResponseFromAI,
+                          style: const TextStyle(
                             color: AppTheme.primaryColor,
                             fontWeight: FontWeight.w500,
                           ),
@@ -115,7 +114,7 @@ class _FirstAidScreenState extends State<FirstAidScreen> {
 
                 // Quick prompt buttons
                 Text(
-                  'Quick Scenarios:',
+                  AppLocalizations.of(context)!.quickScenarios,
                   style: Theme.of(context).textTheme.titleMedium?.copyWith(
                     fontWeight: FontWeight.w600,
                   ),
@@ -123,105 +122,114 @@ class _FirstAidScreenState extends State<FirstAidScreen> {
                 const SizedBox(height: 16),
 
                 // First row of buttons
-                Row(
-                  children: [
-                    Expanded(
-                      child: PromptButton(
-                        icon: '🩸',
-                        title: 'Bleeding',
-                        question: 'Person has heavy bleeding from [location]—what do I do first?',
-                        onPressed: appState.isLoading 
-                            ? () {} // Empty function when loading
-                            : () => _askQuestion(
-                              'Person has heavy bleeding from forearm—what do I do first?',
-                            ),
+                SizedBox(
+                  height: 140,
+                  child: Row(
+                    children: [
+                      Expanded(
+                        child: PromptButton(
+                          icon: '🩸',
+                          title: AppLocalizations.of(context)!.bleeding,
+                          question: AppLocalizations.of(context)!.bleedingQuestion,
+                          onPressed: appState.isLoading 
+                              ? () {} // Empty function when loading
+                              : () => _askQuestion(
+                                AppLocalizations.of(context)!.bleedingQuestion,
+                              ),
+                        ),
                       ),
-                    ),
-                    const SizedBox(width: 8),
-                    Expanded(
-                      child: PromptButton(
-                        icon: '💓',
-                        title: 'CPR',
-                        question: 'Someone is unconscious and not breathing—how do I perform CPR?',
-                        onPressed: appState.isLoading 
-                            ? () {} // Empty function when loading
-                            : () => _askQuestion(
-                              'Someone is unconscious and not breathing—how do I perform CPR?',
-                            ),
+                      const SizedBox(width: 8),
+                      Expanded(
+                        child: PromptButton(
+                          icon: '💓',
+                          title: AppLocalizations.of(context)!.cpr,
+                          question: AppLocalizations.of(context)!.cprQuestion,
+                          onPressed: appState.isLoading 
+                              ? () {} // Empty function when loading
+                              : () => _askQuestion(
+                                AppLocalizations.of(context)!.cprQuestion,
+                              ),
+                        ),
                       ),
-                    ),
-                  ],
+                    ],
+                  ),
                 ),
                 const SizedBox(height: 6),
 
                 // Second row of buttons
-                Row(
-                  children: [
-                    Expanded(
-                      child: PromptButton(
-                        icon: '🔥',
-                        title: 'Burns',
-                        question: 'Person has [degree] burns on [location]—immediate treatment?',
-                        onPressed: appState.isLoading 
-                            ? () {} // Empty function when loading
-                            : () => _askQuestion(
-                              'Person has second-degree burns on hand—immediate treatment?',
-                            ),
+                SizedBox(
+                  height: 140,
+                  child: Row(
+                    children: [
+                      Expanded(
+                        child: PromptButton(
+                          icon: '🔥',
+                          title: AppLocalizations.of(context)!.burns,
+                          question: AppLocalizations.of(context)!.burnsQuestion,
+                          onPressed: appState.isLoading 
+                              ? () {} // Empty function when loading
+                              : () => _askQuestion(
+                                AppLocalizations.of(context)!.burnsQuestion,
+                              ),
+                        ),
                       ),
-                    ),
-                    const SizedBox(width: 8),
-                    Expanded(
-                      child: PromptButton(
-                        icon: '💊',
-                        title: 'Choking',
-                        question: 'Person is choking and cannot speak—what is the Heimlich maneuver?',
-                        onPressed: appState.isLoading 
-                            ? () {} // Empty function when loading
-                            : () => _askQuestion(
-                              'Person is choking and cannot speak—what is the Heimlich maneuver?',
-                            ),
+                      const SizedBox(width: 8),
+                      Expanded(
+                        child: PromptButton(
+                          icon: '💊',
+                          title: AppLocalizations.of(context)!.choking,
+                          question: AppLocalizations.of(context)!.chokingQuestion,
+                          onPressed: appState.isLoading 
+                              ? () {} // Empty function when loading
+                              : () => _askQuestion(
+                                AppLocalizations.of(context)!.chokingQuestion,
+                              ),
+                        ),
                       ),
-                    ),
-                  ],
+                    ],
+                  ),
                 ),
                 const SizedBox(height: 6),
 
                 // Third row of buttons
-                Row(
-                  children: [
-                    Expanded(
-                      child: PromptButton(
-                        icon: '🦴',
-                        title: 'Fractures',
-                        question: 'Person has suspected broken bone in [location]—first aid steps?',
-                        onPressed: appState.isLoading 
-                            ? () {} // Empty function when loading
-                            : () => _askQuestion(
-                              'Person has suspected broken bone in arm—first aid steps?',
-                            ),
+                SizedBox(
+                  height: 140,
+                  child: Row(
+                    children: [
+                      Expanded(
+                        child: PromptButton(
+                          icon: '🦴',
+                          title: AppLocalizations.of(context)!.fractures,
+                          question: AppLocalizations.of(context)!.fracturesQuestion,
+                          onPressed: appState.isLoading 
+                              ? () {} // Empty function when loading
+                              : () => _askQuestion(
+                                AppLocalizations.of(context)!.fracturesQuestion,
+                              ),
+                        ),
                       ),
-                    ),
-                    const SizedBox(width: 8),
-                    Expanded(
-                      child: PromptButton(
-                        icon: '😵',
-                        title: 'Unconscious',
-                        question: 'Person is unconscious but breathing—what should I do?',
-                        onPressed: appState.isLoading 
-                            ? () {} // Empty function when loading
-                            : () => _askQuestion(
-                              'Person is unconscious but breathing—what should I do?',
-                            ),
+                      const SizedBox(width: 8),
+                      Expanded(
+                        child: PromptButton(
+                          icon: '😵',
+                          title: AppLocalizations.of(context)!.unconscious,
+                          question: AppLocalizations.of(context)!.unconsciousQuestion,
+                          onPressed: appState.isLoading 
+                              ? () {} // Empty function when loading
+                              : () => _askQuestion(
+                                AppLocalizations.of(context)!.unconsciousQuestion,
+                              ),
+                        ),
                       ),
-                    ),
-                  ],
+                    ],
+                  ),
                 ),
 
                 const SizedBox(height: 24),
 
                 // Custom question section
                 Text(
-                  'Ask Your Own Question:',
+                  AppLocalizations.of(context)!.askYourOwnQuestion,
                   style: Theme.of(context).textTheme.titleMedium?.copyWith(
                     fontWeight: FontWeight.w600,
                   ),
@@ -231,7 +239,7 @@ class _FirstAidScreenState extends State<FirstAidScreen> {
                 TextField(
                   controller: _questionController,
                   decoration: InputDecoration(
-                    hintText: 'e.g., How do I treat a sprained ankle?',
+                    hintText: AppLocalizations.of(context)!.questionHint,
                     border: OutlineInputBorder(
                       borderRadius: BorderRadius.circular(12),
                     ),
@@ -250,7 +258,7 @@ class _FirstAidScreenState extends State<FirstAidScreen> {
                   child: ElevatedButton.icon(
                     onPressed: appState.isLoading ? null : _askCustomQuestion,
                     icon: const Icon(Icons.search),
-                    label: Text(appState.isLoading ? 'Getting Response...' : 'Get Guidance'),
+                    label: Text(appState.isLoading ? AppLocalizations.of(context)!.gettingResponse : AppLocalizations.of(context)!.getGuidance),
                     style: ElevatedButton.styleFrom(
                       backgroundColor: AppTheme.primaryColor, // Using accessible blue
                       foregroundColor: Colors.white,
@@ -269,41 +277,41 @@ class _FirstAidScreenState extends State<FirstAidScreen> {
                     borderRadius: BorderRadius.circular(12),
                     border: Border.all(color: AppTheme.secondaryColor.withOpacity(0.3)),
                   ),
-                  child: const Column(
+                  child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Row(
                         children: [
-                          Icon(
+                          const Icon(
                             Icons.lightbulb_outline,
                             color: AppTheme.secondaryColor, // Using accessible teal
                           ),
-                          SizedBox(width: 8),
+                          const SizedBox(width: 8),
                           Text(
-                            'First Aid Tips',
-                            style: TextStyle(
+                            AppLocalizations.of(context)!.firstAidTips,
+                            style: const TextStyle(
                               fontWeight: FontWeight.bold,
                               color: AppTheme.secondaryColor, // Using accessible teal
                             ),
                           ),
                         ],
                       ),
-                      SizedBox(height: 8),
+                      const SizedBox(height: 8),
                       Text(
-                        '• Always call emergency services for serious injuries',
-                        style: TextStyle(color: AppTheme.secondaryColor), // Using accessible teal
+                        AppLocalizations.of(context)!.tipCallEmergency,
+                        style: const TextStyle(color: AppTheme.secondaryColor), // Using accessible teal
                       ),
                       Text(
-                        '• Keep first aid supplies readily available',
-                        style: TextStyle(color: AppTheme.secondaryColor), // Using accessible teal
+                        AppLocalizations.of(context)!.tipKeepSupplies,
+                        style: const TextStyle(color: AppTheme.secondaryColor), // Using accessible teal
                       ),
                       Text(
-                        '• Stay calm and assess the situation first',
-                        style: TextStyle(color: AppTheme.secondaryColor), // Using accessible teal
+                        AppLocalizations.of(context)!.tipStayCalm,
+                        style: const TextStyle(color: AppTheme.secondaryColor), // Using accessible teal
                       ),
                       Text(
-                        '• Never move someone with suspected neck/back injury',
-                        style: TextStyle(color: AppTheme.secondaryColor), // Using accessible teal
+                        AppLocalizations.of(context)!.tipDontMove,
+                        style: const TextStyle(color: AppTheme.secondaryColor), // Using accessible teal
                       ),
                     ],
                   ),
@@ -333,8 +341,8 @@ class _FirstAidScreenState extends State<FirstAidScreen> {
       FocusScope.of(context).unfocus();
     } else {
       ScaffoldMessenger.of(context).showSnackBar(
-        const SnackBar(
-          content: Text('Please enter a question'),
+        SnackBar(
+          content: Text(AppLocalizations.of(context)!.pleaseEnterQuestion),
           backgroundColor: AppTheme.warningColor,
         ),
       );

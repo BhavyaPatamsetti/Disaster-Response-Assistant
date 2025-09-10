@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:disaster_response_assistant/l10n/app_localizations.dart';
 import 'package:disaster_response_assistant/providers/app_state.dart';
 import 'package:disaster_response_assistant/main.dart'; // Import AppTheme
 
@@ -281,13 +282,13 @@ class SettingsDrawer extends StatelessWidget {
             Container(
               padding: const EdgeInsets.all(8),
               decoration: BoxDecoration(
-                color: AppTheme.secondaryColor.withOpacity(0.1), // Using accessible teal
+                color: AppTheme.secondaryColor.withOpacity(0.1),
                 borderRadius: BorderRadius.circular(8),
               ),
-              child: const Icon(Icons.language, color: AppTheme.secondaryColor, size: 24), // Using accessible teal
+              child: const Icon(Icons.language, color: AppTheme.secondaryColor, size: 24),
             ),
             const SizedBox(width: 12),
-            const Text('Select Language'),
+            Text(AppLocalizations.of(context)!.selectLanguage),
           ],
         ),
         content: Column(

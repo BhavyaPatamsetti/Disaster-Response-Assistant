@@ -3,6 +3,7 @@ import 'package:shared_preferences/shared_preferences.dart';
 import 'dart:convert';
 import 'package:disaster_response_assistant/models/checklist_item.dart';
 import 'package:disaster_response_assistant/main.dart';
+import 'package:disaster_response_assistant/l10n/app_localizations.dart';
 
 class EmergencyChecklistScreen extends StatefulWidget {
   const EmergencyChecklistScreen({super.key});
@@ -241,7 +242,7 @@ class _EmergencyChecklistScreenState extends State<EmergencyChecklistScreen> {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Text(
-                  'Emergency Preparedness Checklist',
+                  AppLocalizations.of(context)!.emergencyPreparednessChecklist,
                   style: Theme.of(context).textTheme.headlineSmall?.copyWith(
                     fontWeight: FontWeight.bold,
                     color: AppTheme.primaryColor,
@@ -249,7 +250,7 @@ class _EmergencyChecklistScreenState extends State<EmergencyChecklistScreen> {
                 ),
                 const SizedBox(height: 8),
                 Text(
-                  'Complete these tasks to prepare for emergencies',
+                  AppLocalizations.of(context)!.completeTasksPrepare,
                   style: Theme.of(context).textTheme.bodyMedium?.copyWith(
                     color: Colors.grey[600],
                   ),
@@ -264,13 +265,13 @@ class _EmergencyChecklistScreenState extends State<EmergencyChecklistScreen> {
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
                         Text(
-                          'Overall Progress',
+                          AppLocalizations.of(context)!.overallProgress,
                           style: Theme.of(context).textTheme.titleSmall?.copyWith(
                             fontWeight: FontWeight.w600,
                           ),
                         ),
                         Text(
-                          '${(_completionPercentage * 100).round()}% Complete',
+                          '${(_completionPercentage * 100).round()}${AppLocalizations.of(context)!.percentComplete}',
                           style: Theme.of(context).textTheme.titleSmall?.copyWith(
                             color: AppTheme.primaryColor,
                             fontWeight: FontWeight.w600,
@@ -375,7 +376,7 @@ class _EmergencyChecklistScreenState extends State<EmergencyChecklistScreen> {
                             if (item.isCompleted && item.completedAt != null) ...[
                               const SizedBox(width: 8),
                               Text(
-                                'Completed ${_formatDate(item.completedAt!)}',
+                                '${AppLocalizations.of(context)!.completed} ${_formatDate(item.completedAt!)}',
                                 style: TextStyle(
                                   fontSize: 12,
                                   color: Colors.grey[600],
@@ -414,13 +415,13 @@ class _EmergencyChecklistScreenState extends State<EmergencyChecklistScreen> {
   String _getPriorityText(int priority) {
     switch (priority) {
       case 1:
-        return 'High Priority';
+        return AppLocalizations.of(context)!.highPriority;
       case 2:
-        return 'Medium Priority';
+        return AppLocalizations.of(context)!.mediumPriority;
       case 3:
-        return 'Low Priority';
+        return AppLocalizations.of(context)!.lowPriority;
       default:
-        return 'Normal';
+        return AppLocalizations.of(context)!.normal;
     }
   }
 

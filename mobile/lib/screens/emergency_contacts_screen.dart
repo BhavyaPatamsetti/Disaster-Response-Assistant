@@ -4,6 +4,7 @@ import '../models/emergency_contact.dart';
 import '../services/emergency_contacts_service.dart';
 import '../widgets/add_contact_dialog.dart';
 import '../widgets/emergency_contact_card.dart';
+import 'package:disaster_response_assistant/l10n/app_localizations.dart';
 
 class EmergencyContactsScreen extends StatefulWidget {
   const EmergencyContactsScreen({Key? key}) : super(key: key);
@@ -38,7 +39,7 @@ class _EmergencyContactsScreenState extends State<EmergencyContactsScreen> {
       });
       if (mounted) {
         ScaffoldMessenger.of(context).showSnackBar(
-          SnackBar(content: Text('Error loading contacts: $e')),
+          SnackBar(content: Text('${AppLocalizations.of(context)!.errorLoadingContacts}: $e')),
         );
       }
     }
@@ -48,7 +49,7 @@ class _EmergencyContactsScreenState extends State<EmergencyContactsScreen> {
     final defaultContacts = [
       EmergencyContact(
         id: 'emergency_911',
-        name: 'Emergency Services',
+        name: AppLocalizations.of(context)!.emergencyServices,
         phoneNumber: '911',
         relationship: 'Emergency',
         type: ContactType.emergency,
@@ -57,7 +58,7 @@ class _EmergencyContactsScreenState extends State<EmergencyContactsScreen> {
       ),
       EmergencyContact(
         id: 'poison_control',
-        name: 'Poison Control',
+        name: AppLocalizations.of(context)!.poisonControl,
         phoneNumber: '1-800-222-1222',
         relationship: 'Emergency',
         type: ContactType.emergency,
@@ -78,7 +79,7 @@ class _EmergencyContactsScreenState extends State<EmergencyContactsScreen> {
     } else {
       if (mounted) {
         ScaffoldMessenger.of(context).showSnackBar(
-          const SnackBar(content: Text('Could not make phone call')),
+          SnackBar(content: Text(AppLocalizations.of(context)!.couldNotMakeCall)),
         );
       }
     }
@@ -92,7 +93,7 @@ class _EmergencyContactsScreenState extends State<EmergencyContactsScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Emergency Contacts'),
+        title: Text(AppLocalizations.of(context)!.emergencyContacts),
         // backgroundColor: Colors.red[700], // Remove this line
         // foregroundColor: Colors.white, // Remove this line
         actions: [
@@ -123,8 +124,8 @@ class _EmergencyContactsScreenState extends State<EmergencyContactsScreen> {
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      const Text(
-                        'Quick Emergency Dial',
+                      Text(
+                        AppLocalizations.of(context)!.quickEmergencyDial,
                         style: TextStyle(
                           fontSize: 18,
                           fontWeight: FontWeight.bold,
@@ -135,8 +136,8 @@ class _EmergencyContactsScreenState extends State<EmergencyContactsScreen> {
                       Row(
                         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                         children: [
-                          _buildQuickDialButton('911', 'Emergency', Icons.local_hospital),
-                          _buildQuickDialButton('1-800-222-1222', 'Poison Control', Icons.warning),
+                          _buildQuickDialButton('911', AppLocalizations.of(context)!.emergencyServices, Icons.local_hospital),
+                          _buildQuickDialButton('1-800-222-1222', AppLocalizations.of(context)!.poisonControl, Icons.warning),
                         ],
                       ),
                     ],
@@ -184,8 +185,8 @@ class _EmergencyContactsScreenState extends State<EmergencyContactsScreen> {
                                 ),
                               ),
                               const SizedBox(height: 8),
-                              const Text(
-                                'Tap the + button to add contacts',
+                              Text(
+                                AppLocalizations.of(context)!.tapPlusButton,
                                 style: TextStyle(
                                   fontSize: 14,
                                   color: Colors.grey,

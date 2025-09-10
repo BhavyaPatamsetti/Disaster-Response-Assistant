@@ -5,6 +5,7 @@ import '../models/supply_item.dart';
 import '../widgets/supply_item_card.dart';
 import '../widgets/add_supply_dialog.dart';
 import '../widgets/edit_supply_dialog.dart';
+import 'package:disaster_response_assistant/l10n/app_localizations.dart';
 
 class SupplyInventoryScreen extends StatefulWidget {
   const SupplyInventoryScreen({super.key});
@@ -112,7 +113,7 @@ class _SupplyInventoryScreenState extends State<SupplyInventoryScreen> {
     
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Supply Inventory'),
+        title: Text(AppLocalizations.of(context)!.supplyInventory),
         // backgroundColor: Colors.green[700], // Remove this line
         // foregroundColor: Colors.white, // Remove this line
         actions: [
@@ -123,7 +124,7 @@ class _SupplyInventoryScreenState extends State<SupplyInventoryScreen> {
                 _showExpiredOnly = !_showExpiredOnly;
               });
             },
-            tooltip: 'Show expiring items',
+            tooltip: AppLocalizations.of(context)!.showExpiringItems,
           ),
         ],
       ),
@@ -137,9 +138,9 @@ class _SupplyInventoryScreenState extends State<SupplyInventoryScreen> {
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                     children: [
-                      _buildStatItem('Total', totalItems.toString(), Colors.blue),
-                      _buildStatItem('Expired', expiredItems.toString(), Colors.red),
-                      _buildStatItem('Expiring', expiringItems.toString(), Colors.orange),
+                      _buildStatItem(AppLocalizations.of(context)!.total, totalItems.toString(), Colors.blue),
+                      _buildStatItem(AppLocalizations.of(context)!.expired, expiredItems.toString(), Colors.red),
+                      _buildStatItem(AppLocalizations.of(context)!.expiring, expiringItems.toString(), Colors.orange),
                     ],
                   ),
                 ),
@@ -154,7 +155,7 @@ class _SupplyInventoryScreenState extends State<SupplyInventoryScreen> {
                         Padding(
                           padding: const EdgeInsets.only(right: 8),
                           child: FilterChip(
-                            label: const Text('All'),
+                            label: Text(AppLocalizations.of(context)!.all),
                             selected: _selectedCategory == 'All',
                             onSelected: (selected) {
                               setState(() {
@@ -196,8 +197,8 @@ class _SupplyInventoryScreenState extends State<SupplyInventoryScreen> {
                               const SizedBox(height: 16),
                               Text(
                                 _supplies.isEmpty
-                                    ? 'No supplies added yet'
-                                    : 'No supplies match your filters',
+                                    ? AppLocalizations.of(context)!.noSuppliesYet
+                                    : AppLocalizations.of(context)!.noSuppliesMatch,
                                 style: TextStyle(
                                   fontSize: 18,
                                   color: Colors.grey[600],
@@ -206,8 +207,8 @@ class _SupplyInventoryScreenState extends State<SupplyInventoryScreen> {
                               const SizedBox(height: 8),
                               Text(
                                 _supplies.isEmpty
-                                    ? 'Tap the + button to add your first supply'
-                                    : 'Try adjusting your category or expiration filters',
+                                    ? AppLocalizations.of(context)!.tapPlusButton
+                                    : AppLocalizations.of(context)!.tryAdjustingFilters,
                                 style: TextStyle(
                                   fontSize: 14,
                                   color: Colors.grey[500],

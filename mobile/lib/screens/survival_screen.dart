@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import '../l10n/app_localizations.dart';
 import 'package:disaster_response_assistant/providers/app_state.dart';
 import 'package:disaster_response_assistant/widgets/prompt_button.dart';
 
@@ -29,7 +30,7 @@ class _SurvivalScreenState extends State<SurvivalScreen> {
           children: [
             // Header
             Text(
-              '🏕️ Survival Skills',
+              '🏕️ ${AppLocalizations.of(context)!.survivalSkills}',
               style: Theme.of(context).textTheme.headlineSmall?.copyWith(
                 fontWeight: FontWeight.bold,
                 color: Theme.of(context).colorScheme.primary,
@@ -37,7 +38,7 @@ class _SurvivalScreenState extends State<SurvivalScreen> {
             ),
             const SizedBox(height: 8),
             Text(
-              'Learn essential survival techniques for emergency situations:',
+              AppLocalizations.of(context)!.learnEssentialSurvival,
               style: Theme.of(context).textTheme.bodyMedium?.copyWith(
                 color: Colors.grey[600],
               ),
@@ -46,7 +47,7 @@ class _SurvivalScreenState extends State<SurvivalScreen> {
 
             // Quick prompt buttons
             Text(
-              'Essential Skills:',
+              AppLocalizations.of(context)!.essentialSkills,
               style: Theme.of(context).textTheme.titleMedium?.copyWith(
                 fontWeight: FontWeight.w600,
               ),
@@ -54,92 +55,101 @@ class _SurvivalScreenState extends State<SurvivalScreen> {
             const SizedBox(height: 16),
 
             // First row of buttons
-            Row(
-              children: [
-                Expanded(
-                  child: PromptButton(
-                    icon: '💧',
-                    title: 'Water',
-                    question: 'How do I make drinking water safe after [disaster]?',
-                    onPressed: () => _askQuestion(
-                      'How do I make drinking water safe after flooding?',
+            SizedBox(
+              height: 140,
+              child: Row(
+                children: [
+                  Expanded(
+                    child: PromptButton(
+                      icon: '💧',
+                      title: AppLocalizations.of(context)!.water,
+                      question: AppLocalizations.of(context)!.waterQuestion,
+                      onPressed: () => _askQuestion(
+                        'How do I make drinking water safe after flooding?',
+                      ),
                     ),
                   ),
-                ),
-                const SizedBox(width: 12),
-                Expanded(
-                  child: PromptButton(
-                    icon: '🏠',
-                    title: 'Shelter',
-                    question: 'How do I build emergency shelter in [environment]?',
-                    onPressed: () => _askQuestion(
-                      'How do I build emergency shelter in cold weather?',
+                  const SizedBox(width: 12),
+                  Expanded(
+                    child: PromptButton(
+                      icon: '🏠',
+                      title: AppLocalizations.of(context)!.shelter,
+                      question: AppLocalizations.of(context)!.shelterQuestion,
+                      onPressed: () => _askQuestion(
+                        'How do I build emergency shelter in cold weather?',
+                      ),
                     ),
                   ),
-                ),
-              ],
+                ],
+              ),
             ),
             const SizedBox(height: 12),
 
             // Second row of buttons
-            Row(
-              children: [
-                Expanded(
-                  child: PromptButton(
-                    icon: '🔥',
-                    title: 'Fire',
-                    question: 'How do I start a fire safely in [conditions]?',
-                    onPressed: () => _askQuestion(
-                      'How do I start a fire safely in wet conditions?',
+            SizedBox(
+              height: 140,
+              child: Row(
+                children: [
+                  Expanded(
+                    child: PromptButton(
+                      icon: '🔥',
+                      title: AppLocalizations.of(context)!.fire,
+                      question: AppLocalizations.of(context)!.fireQuestion,
+                      onPressed: () => _askQuestion(
+                        'How do I start a fire safely in wet conditions?',
+                      ),
                     ),
                   ),
-                ),
-                const SizedBox(width: 12),
-                Expanded(
-                  child: PromptButton(
-                    icon: '🍎',
-                    title: 'Food',
-                    question: 'What food is safe to eat in emergency situations?',
-                    onPressed: () => _askQuestion(
-                      'What food is safe to eat in emergency situations?',
+                  const SizedBox(width: 12),
+                  Expanded(
+                    child: PromptButton(
+                      icon: '🍎',
+                      title: AppLocalizations.of(context)!.food,
+                      question: AppLocalizations.of(context)!.foodQuestion,
+                      onPressed: () => _askQuestion(
+                        'What food is safe to eat in emergency situations?',
+                      ),
                     ),
                   ),
-                ),
-              ],
+                ],
+              ),
             ),
             const SizedBox(height: 12),
 
             // Third row of buttons
-            Row(
-              children: [
-                Expanded(
-                  child: PromptButton(
-                    icon: '🧼',
-                    title: 'Sanitation',
-                    question: 'How do I maintain hygiene without running water?',
-                    onPressed: () => _askQuestion(
-                      'How do I maintain hygiene without running water?',
+            SizedBox(
+              height: 140,
+              child: Row(
+                children: [
+                  Expanded(
+                    child: PromptButton(
+                      icon: '🧼',
+                      title: AppLocalizations.of(context)!.sanitation,
+                      question: AppLocalizations.of(context)!.sanitationQuestion,
+                      onPressed: () => _askQuestion(
+                        'How do I maintain hygiene without running water?',
+                      ),
                     ),
                   ),
-                ),
-                const SizedBox(width: 12),
-                Expanded(
-                  child: PromptButton(
-                    icon: '🧭',
-                    title: 'Navigation',
-                    question: 'How do I navigate without GPS or compass?',
-                    onPressed: () => _askQuestion(
-                      'How do I navigate without GPS or compass?',
+                  const SizedBox(width: 12),
+                  Expanded(
+                    child: PromptButton(
+                      icon: '🧭',
+                      title: AppLocalizations.of(context)!.navigation,
+                      question: AppLocalizations.of(context)!.navigationQuestion,
+                      onPressed: () => _askQuestion(
+                        'How do I navigate without GPS or compass?',
+                      ),
                     ),
                   ),
-                ),
-              ],
+                ],
+              ),
             ),
             const SizedBox(height: 24),
 
             // Custom question input
             Text(
-              'Or ask a custom survival question:',
+              AppLocalizations.of(context)!.askCustomSurvivalQuestion,
               style: Theme.of(context).textTheme.titleMedium?.copyWith(
                 fontWeight: FontWeight.w600,
               ),
@@ -149,7 +159,7 @@ class _SurvivalScreenState extends State<SurvivalScreen> {
             TextField(
               controller: _questionController,
               decoration: InputDecoration(
-                hintText: 'e.g., How do I signal for help in the wilderness?',
+                hintText: AppLocalizations.of(context)!.survivalQuestionHint,
                 border: OutlineInputBorder(
                   borderRadius: BorderRadius.circular(12),
                 ),
@@ -171,7 +181,7 @@ class _SurvivalScreenState extends State<SurvivalScreen> {
               child: ElevatedButton.icon(
                 onPressed: _askCustomQuestion,
                 icon: const Icon(Icons.search),
-                label: const Text('Get Guidance'),
+                label: Text(AppLocalizations.of(context)!.getGuidance),
                 style: ElevatedButton.styleFrom(
                   backgroundColor: Theme.of(context).colorScheme.primary,
                   foregroundColor: Colors.white,
@@ -201,7 +211,7 @@ class _SurvivalScreenState extends State<SurvivalScreen> {
                       ),
                       const SizedBox(width: 8),
                       Text(
-                        'Survival Tips',
+                        AppLocalizations.of(context)!.survivalTips,
                         style: TextStyle(
                           fontWeight: FontWeight.bold,
                           color: Colors.green[700],
@@ -211,19 +221,19 @@ class _SurvivalScreenState extends State<SurvivalScreen> {
                   ),
                   const SizedBox(height: 8),
                   Text(
-                    '• Always prioritize shelter, water, and fire',
+                    AppLocalizations.of(context)!.tipPrioritizeShelter,
                     style: TextStyle(color: Colors.green[700]),
                   ),
                   Text(
-                    '• Stay calm and assess your situation',
+                    AppLocalizations.of(context)!.tipStayCalmSurvival,
                     style: TextStyle(color: Colors.green[700]),
                   ),
                   Text(
-                    '• Conserve energy and resources',
+                    AppLocalizations.of(context)!.tipConserveEnergy,
                     style: TextStyle(color: Colors.green[700]),
                   ),
                   Text(
-                    '• Signal for help when possible',
+                    AppLocalizations.of(context)!.tipSignalForHelp,
                     style: TextStyle(color: Colors.green[700]),
                   ),
                 ],
@@ -247,8 +257,8 @@ class _SurvivalScreenState extends State<SurvivalScreen> {
       FocusScope.of(context).unfocus();
     } else {
       ScaffoldMessenger.of(context).showSnackBar(
-        const SnackBar(
-          content: Text('Please enter a question'),
+        SnackBar(
+          content: Text(AppLocalizations.of(context)!.pleaseEnterQuestion),
           backgroundColor: Colors.orange,
         ),
       );

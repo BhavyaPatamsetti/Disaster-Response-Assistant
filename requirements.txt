@@ -5,12 +5,12 @@ streamlit==1.28.1
 pydantic==2.5.0
 
 # Vector search and embeddings
-faiss-cpu==1.7.4
+faiss-cpu>=1.9.0
 sentence-transformers==2.2.2
 
 # PDF processing
 pdfplumber==0.11.7
-pdfminer.six==20221105
+# # pdfminer.six==20221105  # Remove this line to avoid conflicts
 
 # HTTP and utilities
 requests==2.31.0

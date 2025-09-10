@@ -5,6 +5,7 @@ import 'package:url_launcher/url_launcher.dart';
 import '../models/location_data.dart';
 import '../services/location_service.dart';
 import '../widgets/offline_indicator.dart';
+import 'package:disaster_response_assistant/l10n/app_localizations.dart';
 
 class LocationTrackingScreen extends StatefulWidget {
   @override
@@ -60,7 +61,7 @@ class _LocationTrackingScreenState extends State<LocationTrackingScreen> {
         });
       } else {
         setState(() {
-          _errorMessage = 'Unable to get current location';
+          _errorMessage = AppLocalizations.of(context)!.unableToGetCurrentLocation;
         });
       }
     } catch (e) {
@@ -88,7 +89,7 @@ class _LocationTrackingScreenState extends State<LocationTrackingScreen> {
         });
       } else {
         setState(() {
-          _errorMessage = 'Failed to start location tracking. Please check permissions.';
+          _errorMessage = AppLocalizations.of(context)!.failedToStartLocationTracking;
         });
       }
     }
@@ -99,7 +100,7 @@ class _LocationTrackingScreenState extends State<LocationTrackingScreen> {
     
     String message = await _locationService.shareLocation(
       _currentLocation!,
-      message: 'Emergency! I need help at this location:'
+      message: AppLocalizations.of(context)!.emergencyLocationMessage
     );
     
     await Share.share(message);
@@ -110,7 +111,7 @@ class _LocationTrackingScreenState extends State<LocationTrackingScreen> {
     
     Clipboard.setData(ClipboardData(text: _currentLocation!.coordinates));
     ScaffoldMessenger.of(context).showSnackBar(
-      SnackBar(content: Text('Coordinates copied to clipboard'))
+      SnackBar(content: Text(AppLocalizations.of(context)!.coordinatesCopiedToClipboard))
     );
   }
 
@@ -133,7 +134,7 @@ class _LocationTrackingScreenState extends State<LocationTrackingScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Location Tracking'),
+        title: Text(AppLocalizations.of(context)!.locationTracking),
         foregroundColor: Colors.black,
       ),
       body: Padding(
@@ -154,7 +155,7 @@ class _LocationTrackingScreenState extends State<LocationTrackingScreen> {
                     ),
                     SizedBox(height: 8),
                     Text(
-                      _isTracking ? 'Location Tracking Active' : 'Location Tracking Inactive',
+                      _isTracking ? AppLocalizations.of(context)!.locationTracking : AppLocalizations.of(context)!.locationTrackingInactive,
                       style: Theme.of(context).textTheme.titleLarge,
                     ),
                     if (_isTracking)
@@ -179,16 +180,16 @@ class _LocationTrackingScreenState extends State<LocationTrackingScreen> {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Text(
-                        'Current Location',
+                        AppLocalizations.of(context)!.currentLocation,
                         style: Theme.of(context).textTheme.titleMedium,
                       ),
                       SizedBox(height: 8),
-                      Text('Coordinates: ${_currentLocation!.coordinates}'),
+                      Text('${AppLocalizations.of(context)!.coordinates}: ${_currentLocation!.coordinates}'),
                       if (_currentLocation!.address != null)
-                        Text('Address: ${_currentLocation!.address}'),
+                        Text('${AppLocalizations.of(context)!.address}: ${_currentLocation!.address}'),
                       if (_currentLocation!.accuracy != null)
-                        Text('Accuracy: ${_currentLocation!.accuracy!.toStringAsFixed(1)}m'),
-                      Text('Updated: ${_currentLocation!.timestamp.toString().substring(0, 19)}'),
+                        Text('${AppLocalizations.of(context)!.accuracy}: ${_currentLocation!.accuracy!.toStringAsFixed(1)}m'),
+                      Text('${AppLocalizations.of(context)!.updated}: ${_currentLocation!.timestamp.toString().substring(0, 19)}'),
                       
                       SizedBox(height: 12),
                       
@@ -199,7 +200,7 @@ class _LocationTrackingScreenState extends State<LocationTrackingScreen> {
                           ElevatedButton.icon(
                             onPressed: _shareLocation,
                             icon: Icon(Icons.share),
-                            label: Text('Share'),
+                            label: Text(AppLocalizations.of(context)!.share),
                             style: ElevatedButton.styleFrom(
                               backgroundColor: Colors.blue,
                               foregroundColor: Colors.white,
@@ -208,7 +209,7 @@ class _LocationTrackingScreenState extends State<LocationTrackingScreen> {
                           ElevatedButton.icon(
                             onPressed: _copyCoordinates,
                             icon: Icon(Icons.copy),
-                            label: Text('Copy'),
+                            label: Text(AppLocalizations.of(context)!.copy),
                             style: ElevatedButton.styleFrom(
                               backgroundColor: Colors.green,
                               foregroundColor: Colors.white,
@@ -217,7 +218,7 @@ class _LocationTrackingScreenState extends State<LocationTrackingScreen> {
                           ElevatedButton.icon(
                             onPressed: _openInMaps,
                             icon: Icon(Icons.map),
-                            label: Text('Maps'),
+                            label: Text(AppLocalizations.of(context)!.maps),
                             style: ElevatedButton.styleFrom(
                               backgroundColor: Colors.orange,
                               foregroundColor: Colors.white,
@@ -265,7 +266,7 @@ class _LocationTrackingScreenState extends State<LocationTrackingScreen> {
                         child: CircularProgressIndicator(strokeWidth: 2),
                       )
                     : Icon(Icons.my_location),
-                  label: Text(_isLoading ? 'Getting Location...' : 'Get Current Location'),
+                  label: Text(_isLoading ? 'Getting Location...' : AppLocalizations.of(context)!.getCurrentLocation),
                   style: ElevatedButton.styleFrom(
                     backgroundColor: Colors.blue[600],
                     foregroundColor: Colors.white,
@@ -278,7 +279,7 @@ class _LocationTrackingScreenState extends State<LocationTrackingScreen> {
                 ElevatedButton.icon(
                   onPressed: _toggleTracking,
                   icon: Icon(_isTracking ? Icons.stop : Icons.play_arrow),
-                  label: Text(_isTracking ? 'Stop Tracking' : 'Start Tracking'),
+                  label: Text(_isTracking ? 'Stop Tracking' : AppLocalizations.of(context)!.startTracking),
                   style: ElevatedButton.styleFrom(
                     backgroundColor: _isTracking ? Colors.red[600] : Colors.green[600],
                     foregroundColor: Colors.white,
