@@ -1,3 +1,61 @@
+# Disaster Response Assistant — Fork
+
+A fork containing a retrieval-augmented assistant with FastAPI, Streamlit, a FAISS knowledge index, local Ollama generation, and a Flutter mobile client.
+
+## What is included
+
+- Backend: `app/backend/main.py`.
+- Web UI: `app/ui/main.py`.
+- Index construction: `scripts/build_index.py`.
+- Mobile client: `mobile/`.
+- Existing setup guides: `QUICKSTART.md` and `MOBILE_SETUP.md`.
+
+## Getting started
+
+Install the Python requirements in an isolated environment, install/run Ollama, and obtain the model expected by the backend (`llama2:7b`). From the repository root:
+
+```sh
+pip install -r requirements.txt
+python scripts/build_index.py data/clean/ artifacts/index.faiss artifacts/meta.json
+python -m uvicorn app.backend.main:app --reload --port 8000
+```
+
+In another terminal, from the same root:
+
+```sh
+streamlit run app/ui/main.py
+```
+
+Keeping the root as the working directory lets relative `artifacts/` paths resolve.
+
+## Repository guide
+
+- `Dockerfile.backend`
+- `MOBILE_SETUP.md`
+- `QUICKSTART.md`
+- `README.md`
+- `app/`
+- `create-portable.sh`
+- `data/`
+- `docker-compose.yml`
+- `ios/`
+- `mobile/`
+- `models/`
+- `pubspec.yaml`
+- `requirements.txt`
+- `scripts/`
+- `setup.py`
+- `start-docker.sh`
+- `test_system.py`
+
+## Limitations and reproducibility
+
+This repository is marked as a fork; preserve upstream attribution and do not present all code as original work. Model/index downloads are required before offline use. The backend hard-codes a localhost Ollama URL, which needs adjustment for container networking. Generated emergency guidance is not a substitute for trained responders or verified emergency instructions.
+
+## Original upstream documentation
+
+The original documentation is retained below to preserve project context and attribution. Some original setup claims need the qualifications above.
+
 # Disaster Response Assistant
 
 An **offline-first** disaster response assistant that provides first-aid, survival, and communications guidance during emergencies without requiring internet connectivity.
